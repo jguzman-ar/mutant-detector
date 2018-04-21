@@ -1,0 +1,29 @@
+/target
+
+*.class
+*.orig
+*.log
+# Package Files #
+*.jar
+*.war
+*.ear
+*.db
+*.iml
+
+######################
+# Eclipse
+######################
+ 
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+.classpath
+.settings/
+.loadpath
+.idea
