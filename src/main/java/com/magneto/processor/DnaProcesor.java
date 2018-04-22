@@ -21,7 +21,9 @@ public class DnaProcesor {
 		
 		//buildVerticalDnaStrings(dnaStrings, filteredMutants);
 		
-		buildObliqueDnaStringsTopBottom(dnaStrings, filteredMutants);
+		//buildDiagonalDnaStringsTopBottom(dnaStrings, filteredMutants);
+		
+		buildDiagonalDnaStringsBottomToTop(dnaStrings, filteredMutants);
 		
 		System.out.println(filteredMutants.size());
 
@@ -45,32 +47,59 @@ public class DnaProcesor {
 	}
 	
 	
-	private static void buildObliqueDnaStringsTopBottom(final List<String> dnaStrings, List<String> filteredMutants) {
+	private static void buildDiagonalDnaStringsTopBottom(final List<String> dnaStrings, List<String> filteredMutants) {
 		
+		// Diagonal processing orientation from top to bottom
 	    for(int i = 0; i < dnaStrings.size() / 2; i++) {
 	    	
-            StringBuffer obliqueArrange1 = new StringBuffer(dnaStrings.size());
-            StringBuffer obliqueArrange2 = new StringBuffer(dnaStrings.size());
+            StringBuffer diagonalArrangeUpper = new StringBuffer(dnaStrings.size());
+            StringBuffer diagonalArrangeLower = new StringBuffer(dnaStrings.size());
 
             for (int j = 0; j < dnaStrings.size() -i; j++) {
-            	obliqueArrange1.append(dnaStrings.get(j).charAt(j+i));
+            	diagonalArrangeUpper.append(dnaStrings.get(j).charAt(j+i));
 
                 if(i != 0) {
-                	obliqueArrange2.append(dnaStrings.get(i + j).charAt(j));
+                	diagonalArrangeLower.append(dnaStrings.get(i+j).charAt(j));
                 }
             }
 
-            if(obliqueArrange1.length() > 0) {
-            	filteredMutants.add(obliqueArrange1.toString());
+            if(diagonalArrangeUpper.length() > 0) {
+            	filteredMutants.add(diagonalArrangeUpper.toString());
             }
 
-            if(obliqueArrange2.length() > 0) {
-            	filteredMutants.add(obliqueArrange2.toString());
+            if(diagonalArrangeLower.length() > 0) {
+            	filteredMutants.add(diagonalArrangeLower.toString());
             }
         }
 	    
-	    System.out.println("Oblique array built top to bottom" + filteredMutants.toString());
-		
+	    System.out.println("Diagonal array built from top to bottom" + filteredMutants.toString());		
 	}
+	
+	private static void buildDiagonalDnaStringsBottomToTop(final List<String> dnaStrings, List<String> filteredMutants) {
+		
+		// Diagonal processing orientation from bottom to top
+	    for(int i = 0; i < dnaStrings.size() / 2; i++) {
+	    	
+            StringBuffer diagonalArrangeUpper = new StringBuffer(dnaStrings.size());
+            StringBuffer diagonalArrangeLower = new StringBuffer(dnaStrings.size());
 
+            for (int j = dnaStrings.size()-1; j >= i; j--) {
+            	diagonalArrangeUpper.append(dnaStrings.get(j).charAt(i+dnaStrings.size()-1-j));
+
+                if(i != 0) {
+                	diagonalArrangeLower.append(dnaStrings.get(j-i).charAt(dnaStrings.size()-1-j));
+                }
+            }
+
+            if(diagonalArrangeUpper.length() > 0) {
+            	filteredMutants.add(diagonalArrangeUpper.toString());
+            }
+
+            if(diagonalArrangeLower.length() > 0) {
+            	filteredMutants.add(diagonalArrangeLower.toString());
+            }
+        }
+	    System.out.println("Diagonal array built from bottom to top" + filteredMutants.toString());		    
+	}
+	
 }
