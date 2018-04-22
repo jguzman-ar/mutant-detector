@@ -7,8 +7,9 @@ public class StatsResource {
 	private double ratio;
 	
 	public StatsResource(long count_mutant_dna, long count_human_dna, double ratio) {
-		this.count_human_dna = count_mutant_dna;
-		this.count_mutant_dna = count_human_dna;
+		
+		this.count_mutant_dna = count_mutant_dna;
+		this.count_human_dna = count_human_dna;		
 		this.ratio = ratio;
 	}
 	

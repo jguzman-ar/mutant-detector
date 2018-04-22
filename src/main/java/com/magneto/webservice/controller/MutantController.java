@@ -1,5 +1,7 @@
 package com.magneto.webservice.controller;
 
+import javax.ws.rs.core.MediaType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,15 +15,13 @@ import com.magneto.webservice.resource.DnaInputResource;
 
 @RestController
 public class MutantController {
-		
+	
 	@Autowired
 	private MutantDetectorService mutantDetector;
 	
-	@RequestMapping(value="/mutant", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value="/mutant", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
 	ResponseEntity<HttpStatus> isMutant(@RequestBody DnaInputResource dna) {
-		
-		System.out.println(dna.toString());
-		
-		return mutantDetector.isMutant(dna.getDna())? ResponseEntity.ok(HttpStatus.OK): ResponseEntity.ok(HttpStatus.FORBIDDEN);
+
+		return mutantDetector.isMutant(dna.getDna())? ResponseEntity.ok(HttpStatus.OK): ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 	}	
 }

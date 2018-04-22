@@ -18,5 +18,4 @@ public class DnaInputResource {
 	public String toString() {
 		return "DnaInput [dna=" + dna + "]";
 	}
-
 }
