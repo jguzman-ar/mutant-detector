@@ -6,10 +6,9 @@ public class Statistic {
 	private long countHumanDna;
 	private double ratio;
 
-	public Statistic(long countMutantDna, long countHumanDna, double ratio) {
+	public Statistic(long countMutantDna, long countHumanDna) {
 		this.countMutantDna = countMutantDna;
 		this.countHumanDna = countHumanDna;
-		this.ratio = ratio;
 	}
 
 	public long getCountMutantDna() {
@@ -24,12 +23,14 @@ public class Statistic {
 		return countHumanDna;
 	}
 	
-	public void setCountHumanDna(Long countHumanDna) {
-		this.countHumanDna = countHumanDna;
-	}
-	
 	public double getRatio() {
-		return ratio;
+		
+		if (countHumanDna > 0 && countMutantDna > 0) {
+			return ((double) countMutantDna/countHumanDna); 
+		} else if (countHumanDna==0) { 
+			return countMutantDna;
+		} 
+		return 0;
 	}
 	
 	public void setRatio(Double ratio) {

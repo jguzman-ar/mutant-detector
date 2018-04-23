@@ -15,7 +15,7 @@ import com.magneto.webservice.resource.StatsResource;
 public class StatsController {
 	
 	@Autowired
-	MutantStatsService statistics;
+	private MutantStatsService statistics;
 	
 	@RequestMapping(value="/stats", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
 	StatsResource getMutantStatistics() {

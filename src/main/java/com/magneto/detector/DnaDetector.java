@@ -8,11 +8,11 @@ import com.magneto.processor.DnaProcesor;
 
 public class DnaDetector {
 	
-	private static final Predicate<String> StringPredicateA = s -> s.contains("AAAA");
-	private static final Predicate<String> StringPredicateC = s -> s.contains("CCCC");
-	private static final Predicate<String> StringPredicateG = s -> s.contains("GGGG");
-	private static final Predicate<String> StringPredicateT = s -> s.contains("TTTT");
-	private static final Predicate<String> mutantDnaPredicate = StringPredicateA.or(StringPredicateC).or(StringPredicateG).or(StringPredicateT);
+	private static final Predicate<String> DNA_PREDICATE_A = s -> s.contains("AAAA");
+	private static final Predicate<String> DNA_PREDICATE_C = s -> s.contains("CCCC");
+	private static final Predicate<String> DNA_PREDICATE_G = s -> s.contains("GGGG");
+	private static final Predicate<String> DNA_PREDICATE_T = s -> s.contains("TTTT");
+	private static final Predicate<String> MUTANT_DNA_PREDICATE = DNA_PREDICATE_A.or(DNA_PREDICATE_C).or(DNA_PREDICATE_G).or(DNA_PREDICATE_T);
 	
     /** 
      * Analyzes and determine presence of mutant DNA building strings in different orientations
@@ -27,19 +27,19 @@ public class DnaDetector {
 		int foundMutantDnaCount = 0;
 		
 		// Horizontal processing don't need any special treatment
-		foundMutantDnaCount = dnaStrings.stream().filter(mutantDnaPredicate).collect(Collectors.toList()).size();		
+		foundMutantDnaCount = dnaStrings.stream().filter(MUTANT_DNA_PREDICATE).collect(Collectors.toList()).size();		
 		if (foundMutantDnaCount >1) return true;
 		
 		// Vertical processing 
-		foundMutantDnaCount += DnaProcesor.buildVerticalDnaStrings(dnaStrings).stream().filter(mutantDnaPredicate).collect(Collectors.toList()).size();
+		foundMutantDnaCount += DnaProcesor.buildVerticalDnaStrings(dnaStrings).stream().filter(MUTANT_DNA_PREDICATE).collect(Collectors.toList()).size();
 		if (foundMutantDnaCount >1) return true;
 		
 		//Diagonal processing top to bottom
-		foundMutantDnaCount += DnaProcesor.buildDiagonalDnaStringsTopBottom(dnaStrings).stream().filter(mutantDnaPredicate).collect(Collectors.toList()).size();
+		foundMutantDnaCount += DnaProcesor.buildDiagonalDnaStringsTopBottom(dnaStrings).stream().filter(MUTANT_DNA_PREDICATE).collect(Collectors.toList()).size();
 		if (foundMutantDnaCount >1) return true;
 		
 		//Diagonal processing bottom to top
-		foundMutantDnaCount += DnaProcesor.buildDiagonalDnaStringsBottomTop(dnaStrings).stream().filter(mutantDnaPredicate).collect(Collectors.toList()).size();
+		foundMutantDnaCount += DnaProcesor.buildDiagonalDnaStringsBottomTop(dnaStrings).stream().filter(MUTANT_DNA_PREDICATE).collect(Collectors.toList()).size();
 		if (foundMutantDnaCount >1) return true;
 		
 		return false;
