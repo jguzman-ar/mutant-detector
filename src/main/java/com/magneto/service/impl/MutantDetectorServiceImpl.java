@@ -1,34 +1,32 @@
 package com.magneto.service.impl;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import com.magneto.dao.DnaRepository;
 import com.magneto.detector.DnaDetector;
-import com.magneto.model.Dna;
 import com.magneto.service.MutantDetectorService;
+import com.magneto.service.PersistenceService;
 
-@Component
+@Service
 public class MutantDetectorServiceImpl implements MutantDetectorService {
 	
 	@Autowired
-	private DnaRepository dnaDAO;
-
+	PersistenceService persistenceService;
+	
 	@Override
 	public boolean isMutant(final List<String> dnaStrings) {
 		
 		boolean isMutant = DnaDetector.isMutantDna(dnaStrings); 
-				
-		dnaDAO.save(new Dna(composeIdFromDna(dnaStrings), isMutant));
 		
+		try {
+			persistenceService.saveDna(dnaStrings, isMutant);
+			
+		} catch (InterruptedException e) {
+			System.out.println("Exception caught while persisting data asynchronously");
+		}		
 		return isMutant;
 	}
-
-	private String composeIdFromDna(List<String> dnaList) {		
-		return dnaList.stream().collect(Collectors.joining(""));
-	};
 
 }
