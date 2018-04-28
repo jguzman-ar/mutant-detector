@@ -22,7 +22,8 @@ public class PersistenceServiceImpl implements PersistenceService {
     public CompletableFuture<Dna> saveDna(List<String> dnaStrings, boolean isMutant) throws InterruptedException {
 		
 		Dna dnaResult = dnaDAO.save(new Dna(composeIdFromDna(dnaStrings), isMutant));
-		System.out.println("Saving thread"+Thread.currentThread().toString());
+		
+		System.out.println("Saving thread - "+Thread.currentThread().toString());
 		
 		return CompletableFuture.completedFuture(dnaResult);		
 	}
