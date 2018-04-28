@@ -15,7 +15,7 @@ public class DnaDetector {
 	private static final Predicate<String> MUTANT_DNA_PREDICATE = DNA_PREDICATE_A.or(DNA_PREDICATE_C).or(DNA_PREDICATE_G).or(DNA_PREDICATE_T);
 	
     /** 
-     * Analyzes and determine presence of mutant DNA building strings in different orientations
+     * Analyzes and determine presence of mutant DNA via building strings in different orientations
      * to determine if partial matchings already fulfill the mutant criteria at every step saving some 
      * clock ticks.
      * 

@@ -3,7 +3,12 @@ package com.magneto.processor;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class DnaProcesor {
+	
+	private static final Logger log = LoggerFactory.getLogger(DnaProcesor.class);
 
 	public static List<String> buildVerticalDnaStrings(final List<String> dnaStrings) {
 
@@ -22,7 +27,7 @@ public class DnaProcesor {
 			verticalDnaString.add(columnArrange.toString());
 		}
 
-		System.out.println("Vertical array built" + verticalDnaString.toString());
+		log.info(String.format("Vertical array built %s", verticalDnaString.toString()));
 
 		return verticalDnaString;
 	}
@@ -54,7 +59,7 @@ public class DnaProcesor {
 			}
 		}
 
-		System.out.println("Diagonal array built from top to bottom" + diagonalDnaString.toString());
+		log.info(String.format("Diagonal array built from top to bottom %s", diagonalDnaString.toString()));
 
 		return diagonalDnaString;
 	}
@@ -85,7 +90,7 @@ public class DnaProcesor {
 				diagonalDnaString.add(diagonalArrangeLower.toString());
 			}
 		}
-		System.out.println("Diagonal array built from bottom to top" + diagonalDnaString.toString());
+		log.info(String.format("Diagonal array built from bottom to top %s", diagonalDnaString.toString()));
 
 		return diagonalDnaString;
 	}
