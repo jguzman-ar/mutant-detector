@@ -16,11 +16,15 @@ public class StatsController {
 	
 	@Autowired
 	private MutantStatsService statistics;
-	
+
 	@RequestMapping(value="/stats", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
 	StatsResource getMutantStatistics() {
 		
 		return StatisticsMapper.map(statistics.getMutantStatistics());
+	}
+	
+	public void setStatistics(MutantStatsService statistics) {
+		this.statistics = statistics;
 	}
 
 }

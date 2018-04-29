@@ -18,10 +18,15 @@ public class MutantController {
 	
 	@Autowired
 	private MutantDetectorService mutantDetector;
-	
+
 	@RequestMapping(value="/mutant", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
 	ResponseEntity<HttpStatus> isMutant(@RequestBody DnaInputResource dna) {
 
 		return mutantDetector.isMutant(dna.getDna())? ResponseEntity.ok(HttpStatus.OK): ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 	}	
+	
+	public void setMutantDetector(MutantDetectorService mutantDetector) {
+		this.mutantDetector = mutantDetector;
+	}
+
 }

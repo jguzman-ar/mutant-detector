@@ -20,10 +20,6 @@ public class Dna {
 	public boolean isMutant() {
 		return isMutant;
 	}
-
-	public void setMutant(boolean isMutant) {
-		this.isMutant = isMutant;
-	}
 }
 
 

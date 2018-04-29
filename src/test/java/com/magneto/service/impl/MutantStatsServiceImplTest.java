@@ -1,20 +1,16 @@
 package com.magneto.service.impl;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import static org.mockito.Mockito.*;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
+import com.magneto.MagnetoTest;
 import com.magneto.dao.DnaRepository;
 import com.magneto.exception.PersistenceException;
 import com.magneto.model.Statistic;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-public class MutantStatsServiceImplTest {
+public class MutantStatsServiceImplTest extends MagnetoTest {
 	
 	@Mock
 	DnaRepository dnaDao;
@@ -24,11 +20,6 @@ public class MutantStatsServiceImplTest {
 	@Before
 	public void setup() {
 		mssi.setDnaDAO(dnaDao);
-	}
-	
-	@After
-	public void validate() {
-		validateMockitoUsage();
 	}
 
 	@Test

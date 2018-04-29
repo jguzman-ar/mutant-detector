@@ -1,6 +1,5 @@
 package com.magneto.service.impl;
 
-import static org.mockito.Mockito.validateMockitoUsage;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
@@ -8,23 +7,19 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
+import com.magneto.MagnetoTest;
 import com.magneto.dao.DnaRepository;
 import com.magneto.exception.PersistenceException;
 import com.magneto.model.Dna;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-public class PersistenceServiceImplTest {
+public class PersistenceServiceImplTest extends MagnetoTest {
 	
 	private final String testDnaId = "ATGCGACAGTGCTTATGTAGAAGGCCCCTATCACTG";
 	private final List<String> testDna = Arrays.asList("ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG");
@@ -37,11 +32,6 @@ public class PersistenceServiceImplTest {
 	@Before
 	public void setup() {
 		psi.setDnaDAO(dnaDao);
-	}
-	
-	@After
-	public void validate() {
-		validateMockitoUsage();
 	}
 	
 	@Test

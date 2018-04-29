@@ -13,9 +13,4 @@ public class DnaInputResource {
 	public void setDna(List<String> dna) {
 		this.dna = dna;
 	}
-
-	@Override
-	public String toString() {
-		return "DnaInput [dna=" + dna + "]";
-	}
 }
