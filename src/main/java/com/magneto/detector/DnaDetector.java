@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import com.magneto.processor.DnaProcesor;
+import com.magneto.processor.DnaProcessor;
 
 public class DnaDetector {
 	
@@ -31,15 +31,15 @@ public class DnaDetector {
 		if (foundMutantDnaCount >1) return true;
 		
 		// Vertical processing 
-		foundMutantDnaCount += DnaProcesor.buildVerticalDnaStrings(dnaStrings).stream().filter(MUTANT_DNA_PREDICATE).collect(Collectors.toList()).size();
+		foundMutantDnaCount += DnaProcessor.buildVerticalDnaStrings(dnaStrings).stream().filter(MUTANT_DNA_PREDICATE).collect(Collectors.toList()).size();
 		if (foundMutantDnaCount >1) return true;
 		
 		//Diagonal processing top to bottom
-		foundMutantDnaCount += DnaProcesor.buildDiagonalDnaStringsTopBottom(dnaStrings).stream().filter(MUTANT_DNA_PREDICATE).collect(Collectors.toList()).size();
+		foundMutantDnaCount += DnaProcessor.buildDiagonalDnaStringsTopBottom(dnaStrings).stream().filter(MUTANT_DNA_PREDICATE).collect(Collectors.toList()).size();
 		if (foundMutantDnaCount >1) return true;
 		
 		//Diagonal processing bottom to top
-		foundMutantDnaCount += DnaProcesor.buildDiagonalDnaStringsBottomTop(dnaStrings).stream().filter(MUTANT_DNA_PREDICATE).collect(Collectors.toList()).size();
+		foundMutantDnaCount += DnaProcessor.buildDiagonalDnaStringsBottomTop(dnaStrings).stream().filter(MUTANT_DNA_PREDICATE).collect(Collectors.toList()).size();
 		if (foundMutantDnaCount >1) return true;
 		
 		return false;

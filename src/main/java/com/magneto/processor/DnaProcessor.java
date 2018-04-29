@@ -6,9 +6,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DnaProcesor {
+public class DnaProcessor {
 	
-	private static final Logger log = LoggerFactory.getLogger(DnaProcesor.class);
+	private static final Logger log = LoggerFactory.getLogger(DnaProcessor.class);
 
 	public static List<String> buildVerticalDnaStrings(final List<String> dnaStrings) {
 

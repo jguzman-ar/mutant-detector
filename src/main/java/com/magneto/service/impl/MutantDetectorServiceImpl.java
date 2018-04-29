@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.magneto.detector.DnaDetector;
-import com.magneto.exception.PersistenceException;
 import com.magneto.service.MutantDetectorService;
 import com.magneto.service.PersistenceService;
 
@@ -33,5 +32,11 @@ public class MutantDetectorServiceImpl implements MutantDetectorService {
 
 		return isMutant;
 	}
+	
+
+	public void setPersistenceService(PersistenceService persistenceService) {
+		this.persistenceService = persistenceService;
+	}
+
 
 }

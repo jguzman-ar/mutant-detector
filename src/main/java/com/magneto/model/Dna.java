@@ -7,6 +7,10 @@ public class Dna {
 	@Id
 	private String dna;
 	private boolean isMutant;
+	
+	public String getDna() {
+		return dna;
+	}
 
 	public Dna(String dna, boolean isMutant) {
 		this.dna = dna;

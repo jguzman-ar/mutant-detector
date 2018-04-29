@@ -8,5 +8,4 @@ import com.magneto.model.Dna;
 public interface PersistenceService {
 	
 	CompletableFuture<Dna> saveDna(List<String> dnaStrings, boolean isMutant) throws InterruptedException;
-
 }

@@ -42,4 +42,9 @@ public class MutantStatsServiceImpl implements MutantStatsService {
 		return Example.of(new Dna(null, true));
 	}
 
+	public void setDnaDAO(DnaRepository dnaDAO) {
+		this.dnaDAO = dnaDAO;
+	}
+
+
 }

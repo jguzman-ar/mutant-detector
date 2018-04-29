@@ -22,7 +22,7 @@ public class PersistenceServiceImpl implements PersistenceService {
 	
 	@Autowired
 	private DnaRepository dnaDAO;
-	
+
 	@Async
     public CompletableFuture<Dna> saveDna(List<String> dnaStrings, boolean isMutant) {
 		
@@ -41,5 +41,9 @@ public class PersistenceServiceImpl implements PersistenceService {
 
 	private String composeIdFromDna(List<String> dnaList) {		
 		return dnaList.stream().collect(Collectors.joining(""));
+	}
+	
+	public void setDnaDAO(DnaRepository dnaDAO) {
+		this.dnaDAO = dnaDAO;
 	}
 }
