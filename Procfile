@@ -1,1 +1,1 @@
-java $JAVA_OPTS -jar target/mutant-detector-1.0.0.jar --server.port=$PORT $JAR_OPTS
+web: java -jar -Dserver.port=$PORT target/mutant-detector-1.0.0.jar
