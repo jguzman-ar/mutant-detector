@@ -84,15 +84,15 @@ Tested the API performance `locally` using Apache Jmeter tool. For replicating t
 - Persistence Thread Pool executor settings were setup on application [properties](https://github.com/jguzman-ar/mutant-detector/blob/master/src/main/resources/application.properties) and can be tweaked for optimal results by setting pool size and queue capacity.
 
 ##### Tested load with figures: 
-Concurrent threads: 1000
-Ramp up time: 5 seconds
-Loop count: 10 times
-Total samples: 20000
-Minimum response times: 2 milliseconds
-Average response times: 618 milliseconds
-Maximum response times: 1524 milliseconds
-Error percentage: 0 %
-Throughput: 1086 requests/second
+- Concurrent threads: 1000
+- Ramp up time: 5 seconds
+- Loop count: 10 times
+- Total samples: 20000
+- Minimum response times: 2 milliseconds
+- Average response times: 618 milliseconds
+- Maximum response times: 1524 milliseconds
+- Error percentage: 0 %
+- Throughput: 1086 requests/second
 
 
 
